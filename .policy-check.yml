@@ -1,0 +1,25 @@
+version: 1
+rules:
+  - name: source changes require tests, bundle, and ownership
+    when:
+      paths:
+        - src/**
+    require:
+      - changed-path: tests/**
+      - changed-path: dist/index.js
+      - codeowners-covered: true
+
+  - name: Action metadata changes require metadata tests and ownership
+    when:
+      paths:
+        - action.yml
+    require:
+      - changed-path: tests/metadata.test.ts
+      - codeowners-covered: true
+
+  - name: workflow changes require ownership
+    when:
+      paths:
+        - .github/workflows/**
+    require:
+      - codeowners-covered: true
