@@ -14,7 +14,7 @@
   "scripts": {
     "test": "node --import tsx --experimental-test-coverage --test-coverage-include=src/**/*.ts --test-coverage-exclude=src/index.ts --test-coverage-lines=95 --test-coverage-branches=85 --test-coverage-functions=95 --test tests/**/*.test.ts",
     "test:e2e": "node --import tsx --test e2e/**/*.test.ts",
-    "build": "tsc --noEmit && esbuild src/index.ts --bundle --platform=node --format=cjs --outfile=dist/index.js",
+    "build": "tsc --noEmit && esbuild src/index.ts --bundle --minify --platform=node --format=cjs --outfile=dist/index.js",
     "verify": "pnpm test && pnpm run build && pnpm run test:e2e && pnpm audit --prod"
   },
   "dependencies": {
