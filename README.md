@@ -1,10 +1,51 @@
+<div align="center">
+
 # policy-check
 
-Deterministic pull-request policy enforcement for GitHub repositories.
+**Deterministic quality gates for every pull request.**
 
-`policy-check` is not an AI code reviewer. It applies repository-defined, path-based merge requirements to every pull request and produces the same result for the same inputs. There is no model call, source upload, external service, or code interpretation.
+<p>
+  <a href="https://github.com/AS1HK/policy-check/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/AS1HK/policy-check/test.yml?branch=main&style=flat-square&label=CI" alt="CI status"></a>
+  <a href="https://github.com/AS1HK/policy-check/blob/main/LICENSE"><img src="https://img.shields.io/github/license/AS1HK/policy-check?style=flat-square" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/runtime-Node%2024-2ea44f?style=flat-square" alt="Node 24 runtime">
+  <img src="https://img.shields.io/badge/AI-none-111827?style=flat-square" alt="No AI required">
+</p>
+
+<p>
+  <img src="assets/policy-check-flow.svg" alt="Policy check evaluates changed files against repository rules and reports a deterministic result" width="760">
+</p>
+
+</div>
+
+`policy-check` is a lightweight GitHub Action that turns repository quality rules into deterministic pull-request checks.
+
+It is not an AI code reviewer. It applies repository-defined, path-based merge requirements to every pull request and produces the same result for the same inputs. There is no model call, source upload, external service, or code interpretation.
 
 > Code review suggests what may be wrong. `policy-check` proves whether your repository's explicit prerequisites were met.
+
+## Why policy-check?
+
+| AI code review | policy-check |
+| --- | --- |
+| Suggests possible problems | Enforces explicit prerequisites |
+| Probabilistic and semantic | Deterministic and path-based |
+| Reviews code from any context | Evaluates the policy at the PR base commit |
+| Often needs a hosted service | Runs as a small, read-only Action |
+
+The same policy and the same pull-request inputs always produce the same result.
+
+## At a glance
+
+```mermaid
+flowchart LR
+    A[Pull request] --> B[Changed paths]
+    B --> C{Policy rules}
+    C -->|matched| D[Required tests / files / owners]
+    C -->|no match| E[Pass]
+    D --> F{All requirements met?}
+    F -->|yes| E
+    F -->|no| G[Fail with an actionable report]
+```
 
 ## Quick start
 
