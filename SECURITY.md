@@ -14,4 +14,4 @@ Until the first stable release, only the latest `v0` release is supported. Secur
 
 ## Security model
 
-`policy-check` reads pull request metadata, `.policy-check.yml`, and CODEOWNERS through the GitHub API. It does not execute pull request code, check out the pull request head, send repository content to an external service, or request write permissions.
+`agent-policy-check` reads pull request metadata, `.policy-check.yml`, and CODEOWNERS through the GitHub API. It does not execute pull request code, check out the pull request head, send repository content to an external service, or request write permissions.

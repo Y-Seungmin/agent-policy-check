@@ -1,10 +1,10 @@
-# policy-check product specification
+# agent-policy-check product specification
 
 ## Positioning
 
-`policy-check` is a lightweight GitHub Action that deterministically enforces repository-defined quality policies on pull requests.
+`agent-policy-check` is a lightweight GitHub Action that deterministically enforces repository-defined quality policies on pull requests.
 
-It is not an AI reviewer. AI review tools interpret code and offer suggestions; policy-check answers a narrower, verifiable question: **did this pull request satisfy the explicit merge prerequisites defined by the repository owner?**
+It is not an AI reviewer. AI review tools interpret code and offer suggestions; agent-policy-check answers a narrower, verifiable question: **did this pull request satisfy the explicit merge prerequisites defined by the repository owner?**
 
 The product is intentionally serverless, read-only, reproducible, and independent of who or what authored the pull request.
 
@@ -65,7 +65,7 @@ Supported behavior includes `*`, `?`, `**`, root anchors, directory patterns, in
 ## Results
 
 - `passed`: all triggered rules were satisfied.
-- `failed`: at least one rule was violated or policy-check could not safely complete.
+- `failed`: at least one rule was violated or agent-policy-check could not safely complete.
 - `skipped`: the base commit does not contain `.policy-check.yml`.
 
 Every completed evaluation writes `result` and `violation-count` outputs plus a bounded GitHub job summary. Violation summaries include rule names, matched paths, and missing requirements. Operational failures also produce a summary.

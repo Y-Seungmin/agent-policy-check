@@ -38,7 +38,7 @@ export async function run(options: RunOptions = {}): Promise<PolicyViolation[]> 
   const fail = options.fail ?? ((message: string) => { throw new Error(message); });
   const setOutput = options.setOutput ?? (() => undefined);
   const writeSummary = options.writeSummary ?? (() => undefined);
-  log(`policy-check started: ${eventName}`);
+  log(`agent-policy-check started: ${eventName}`);
 
   const publish = async (
     result: CheckResult,

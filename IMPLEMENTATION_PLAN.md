@@ -1,4 +1,4 @@
-# policy-check implementation plan
+# agent-policy-check implementation plan
 
 Reference: [`PROJECT.md`](./PROJECT.md)
 
@@ -57,7 +57,7 @@ src/report.ts      Bounded and escaped human/machine-readable results
 
 No additional v0 product features are planned before release. The remaining work requires a GitHub remote:
 
-1. Push the uncommitted source and generated bundle to `AS1HK/policy-check`.
+1. Push the source and generated bundle to `Y-Seungmin/agent-policy-check`.
 2. Confirm the hosted CI workflow on `ubuntu-24.04`.
 3. Run sample pull requests for pass, violation, rename-out, deleted companion, missing policy, malformed policy, and CODEOWNERS coverage.
 4. Enable branch protection or a ruleset with the CI check and, where desired, **Require review from Code Owners**.

@@ -1,31 +1,31 @@
 <div align="center">
 
-# policy-check
+# agent-policy-check
 
 **Deterministic quality gates for every pull request.**
 
 <p>
-  <a href="https://github.com/AS1HK/policy-check/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/AS1HK/policy-check/test.yml?branch=main&style=flat-square&label=CI" alt="CI status"></a>
-  <a href="https://github.com/AS1HK/policy-check/blob/main/LICENSE"><img src="https://img.shields.io/github/license/AS1HK/policy-check?style=flat-square" alt="MIT license"></a>
+  <a href="https://github.com/Y-Seungmin/agent-policy-check/actions/workflows/test.yml"><img src="https://img.shields.io/github/actions/workflow/status/Y-Seungmin/agent-policy-check/test.yml?branch=main&style=flat-square&label=CI" alt="CI status"></a>
+  <a href="https://github.com/Y-Seungmin/agent-policy-check/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Y-Seungmin/agent-policy-check?style=flat-square" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/runtime-Node%2024-2ea44f?style=flat-square" alt="Node 24 runtime">
   <img src="https://img.shields.io/badge/AI-none-111827?style=flat-square" alt="No AI required">
 </p>
 
 <p>
-  <img src="assets/policy-check-flow.svg" alt="Policy check evaluates changed files against repository rules and reports a deterministic result" width="760">
+  <img src="assets/policy-check-flow.svg" alt="Agent policy check evaluates changed files against repository rules and reports a deterministic result" width="760">
 </p>
 
 </div>
 
-`policy-check` is a lightweight GitHub Action that turns repository quality rules into deterministic pull-request checks.
+`agent-policy-check` is a lightweight GitHub Action that turns repository quality rules into deterministic pull-request checks.
 
 It is not an AI code reviewer. It applies repository-defined, path-based merge requirements to every pull request and produces the same result for the same inputs. There is no model call, source upload, external service, or code interpretation.
 
-> Code review suggests what may be wrong. `policy-check` proves whether your repository's explicit prerequisites were met.
+> Code review suggests what may be wrong. `agent-policy-check` proves whether your repository's explicit prerequisites were met.
 
-## Why policy-check?
+## Why agent-policy-check?
 
-| AI code review | policy-check |
+| AI code review | agent-policy-check |
 | --- | --- |
 | Suggests possible problems | Enforces explicit prerequisites |
 | Probabilistic and semantic | Deterministic and path-based |
@@ -49,10 +49,10 @@ flowchart LR
 
 ## Quick start
 
-Add `.github/workflows/policy-check.yml`:
+Add `.github/workflows/agent-policy-check.yml`:
 
 ```yaml
-name: policy-check
+name: agent-policy-check
 
 on:
   pull_request:
@@ -63,11 +63,11 @@ permissions:
   pull-requests: read
 
 jobs:
-  policy-check:
+  agent-policy-check:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - uses: AS1HK/policy-check@v0
+      - uses: Y-Seungmin/agent-policy-check@v0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -162,7 +162,7 @@ The Action treats pull-request code as untrusted:
 - The pull request head SHA is verified after loading the file list. If the pull request advances during evaluation, the run fails and asks for a rerun on the latest commit.
 - Pull requests with more than 3,000 changed files fail closed because GitHub's files API cannot return a complete list beyond that limit.
 
-If `.policy-check.yml` does not exist on the base commit, the Action reports `skipped`. This allows policy-check to be introduced without breaking the pull request that adds the first policy.
+If `.policy-check.yml` does not exist on the base commit, the Action reports `skipped`. This allows agent-policy-check to be introduced without breaking the pull request that adds the first policy.
 
 ## Results and outputs
 
@@ -175,7 +175,7 @@ Every evaluated run writes a GitHub job summary. Failed checks include the rule 
 
 ```yaml
 - id: policy
-  uses: AS1HK/policy-check@v0
+  uses: Y-Seungmin/agent-policy-check@v0
   with:
     github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -213,7 +213,7 @@ GitHub Actions execute `dist/index.js`, so every release must include a freshly 
 
 ## Scope
 
-`policy-check` intentionally does not perform AI review, semantic code analysis, automatic fixes, commits, review approval checks, or organization membership lookups. Its v0 contract is small, deterministic, and inspectable.
+`agent-policy-check` intentionally does not perform AI review, semantic code analysis, automatic fixes, commits, review approval checks, or organization membership lookups. Its v0 contract is small, deterministic, and inspectable.
 
 ## License
 

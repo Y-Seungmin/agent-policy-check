@@ -16,13 +16,13 @@ const TEXT_LIMIT = 120;
 
 export function renderSummary(input: SummaryInput): string {
   if (input.result === 'skipped') {
-    return '# policy-check\n\n'
+    return '# agent-policy-check\n\n'
       + '⏭️ Skipped — No policy file was found at `.policy-check.yml` on the pull request base commit.\n';
   }
 
   const changedFileCount = input.changedFileCount ?? 0;
   if (input.result === 'passed') {
-    return '# policy-check\n\n'
+    return '# agent-policy-check\n\n'
       + `✅ Passed — ${changedFileCount} changed ${plural(changedFileCount, 'file')} evaluated.\n`;
   }
 
@@ -37,7 +37,7 @@ export function renderSummary(input: SummaryInput): string {
     ? `\n_${hiddenCount === 1 ? '1 more violation' : `and ${hiddenCount} more violations`} not shown._\n`
     : '';
 
-  return '# policy-check\n\n'
+  return '# agent-policy-check\n\n'
     + `❌ Failed — ${input.violations.length} policy ${plural(input.violations.length, 'violation')} across ${changedFileCount} changed ${plural(changedFileCount, 'file')}.\n\n`
     + '| Rule | Matched path(s) | Missing requirement(s) |\n'
     + '| --- | --- | --- |\n'
@@ -65,8 +65,8 @@ function formatLogRequirements(requirements: string[]): string {
 
 export function renderErrorSummary(message: string): string {
   const safeMessage = escapeMarkdown(shorten(message.replace(/[\r\n]+/g, ' ')));
-  return '# policy-check\n\n'
-    + '❌ Failed — policy-check could not complete.\n\n'
+  return '# agent-policy-check\n\n'
+    + '❌ Failed — agent-policy-check could not complete.\n\n'
     + `**Error:** ${safeMessage}\n`;
 }
 

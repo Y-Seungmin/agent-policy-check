@@ -17,7 +17,7 @@ async function main(): Promise<void> {
         const headSha = pullRequest?.head?.sha;
         if (typeof pullNumber !== 'number' || typeof baseSha !== 'string'
           || typeof headSha !== 'string') {
-          throw new Error('policy-check requires a pull_request event with base and head commits');
+          throw new Error('agent-policy-check requires a pull_request event with base and head commits');
         }
         return { client, owner, repo, pullNumber, baseSha, headSha };
       },
@@ -35,7 +35,7 @@ async function main(): Promise<void> {
     try {
       await core.summary.addRaw(renderErrorSummary(message)).write();
     } catch (summaryError: unknown) {
-      core.error(`Could not write the policy-check job summary: ${String(summaryError)}`);
+      core.error(`Could not write the agent-policy-check job summary: ${String(summaryError)}`);
     }
     core.setFailed(message);
   }

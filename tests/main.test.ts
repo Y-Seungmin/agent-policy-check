@@ -13,7 +13,7 @@ describe('policy-check action', () => {
     });
 
     assert.deepEqual(messages, [
-      'policy-check started: pull_request',
+      'agent-policy-check started: pull_request',
       'All policy checks passed',
     ]);
   });
@@ -108,7 +108,7 @@ rules:
       log: (message) => messages.push(message),
     }), []);
     assert.deepEqual(messages, [
-      'policy-check started: pull_request',
+      'agent-policy-check started: pull_request',
       'No .policy-check.yml found on the pull request base commit; skipping policy checks',
     ]);
   });

@@ -1,5 +1,5 @@
 {
-  "name": "policy-check",
+  "name": "agent-policy-check",
   "private": true,
   "version": "0.1.0",
   "packageManager": "pnpm@11.9.0",
@@ -9,7 +9,7 @@
   "description": "Deterministically enforce repository-defined pull request policies",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AS1HK/policy-check.git"
+    "url": "https://github.com/Y-Seungmin/agent-policy-check.git"
   },
   "scripts": {
     "test": "node --import tsx --experimental-test-coverage --test-coverage-include=src/**/*.ts --test-coverage-exclude=src/index.ts --test-coverage-lines=95 --test-coverage-branches=85 --test-coverage-functions=95 --test tests/**/*.test.ts",

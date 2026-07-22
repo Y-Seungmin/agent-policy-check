@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
-  <title id="title">policy-check deterministic pull request gate</title>
+  <title id="title">agent-policy-check deterministic pull request gate</title>
   <desc id="desc">A pull request flows through changed paths and repository policy rules to a pass or fail result.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">

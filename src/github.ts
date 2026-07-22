@@ -79,12 +79,12 @@ export async function loadChangedFiles(
 
   if (metadata.headSha !== expectedHeadSha) {
     throw new Error(
-      'Pull request head changed while policy-check was running; rerun the check on the latest commit',
+      'Pull request head changed while agent-policy-check was running; rerun the check on the latest commit',
     );
   }
   if (metadata.changedFileCount > GITHUB_FILE_LIMIT) {
     throw new Error(
-      `Pull request exceeds GitHub's 3,000-file API limit (${metadata.changedFileCount} files); split the pull request so policy-check can evaluate every file`,
+      `Pull request exceeds GitHub's 3,000-file API limit (${metadata.changedFileCount} files); split the pull request so agent-policy-check can evaluate every file`,
     );
   }
   if (rawFiles.length !== metadata.changedFileCount) {

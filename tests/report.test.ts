@@ -7,11 +7,11 @@ describe('Action report', () => {
   it('renders deterministic pass and skip summaries', () => {
     assert.equal(
       renderSummary({ result: 'passed', violations: [], changedFileCount: 2 }),
-      `# policy-check\n\n✅ Passed — 2 changed files evaluated.\n`,
+      `# agent-policy-check\n\n✅ Passed — 2 changed files evaluated.\n`,
     );
     assert.equal(
       renderSummary({ result: 'skipped', violations: [] }),
-      `# policy-check\n\n⏭️ Skipped — No policy file was found at \`.policy-check.yml\` on the pull request base commit.\n`,
+      `# agent-policy-check\n\n⏭️ Skipped — No policy file was found at \`.policy-check.yml\` on the pull request base commit.\n`,
     );
   });
 
@@ -65,7 +65,7 @@ describe('Action report', () => {
   it('escapes operational errors for the job summary', () => {
     assert.equal(
       renderErrorSummary('bad | <response>\nsecond line'),
-      '# policy-check\n\n❌ Failed — policy-check could not complete.\n\n'
+      '# agent-policy-check\n\n❌ Failed — agent-policy-check could not complete.\n\n'
         + '**Error:** bad &#124; &lt;response&gt; second line\n',
     );
   });

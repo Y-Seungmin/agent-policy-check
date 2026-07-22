@@ -119,7 +119,7 @@ describe('GitHub pull request files', () => {
 
     await assert.rejects(
       loadChangedFiles(client, 'org', 'repo', 7, 'event-head-sha'),
-      /head changed while policy-check was running/,
+      /head changed while agent-policy-check was running/,
     );
   });
 

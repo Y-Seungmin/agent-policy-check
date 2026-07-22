@@ -1,6 +1,6 @@
-name: policy-check
+name: agent-policy-check
 description: Deterministically enforce repository-defined pull request policies
-author: AS1HK
+author: Y-Seungmin
 inputs:
   github-token:
     description: GitHub token used to read pull request files and trusted base-commit policy files
