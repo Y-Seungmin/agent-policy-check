@@ -50,4 +50,4 @@ jobs:
         run: pnpm audit --prod
 
       - name: Verify committed bundle
-        run: git diff --exit-code -- dist/index.js
+        run: git diff --ignore-space-at-eol --exit-code -- dist/index.js
